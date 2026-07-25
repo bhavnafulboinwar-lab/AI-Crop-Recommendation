@@ -4,12 +4,7 @@ from utils.predictor import load_prediction_engine, predict_crop
 
 # Initialize Flask application
 # Point template folder to the design workspace and static folder to design assets
-app = Flask(
-    __name__, 
-    template_folder='AI-Crop-Recommendation', 
-    static_folder='AI-Crop-Recommendation/assets',
-    static_url_path='/assets'
-)
+app = Flask(__name__, static_folder='assets', static_url_path='/assets')
 
 # Attempt to load the prediction engine (models, scalers) at startup to catch load errors early
 prediction_engine_status = "Not Initialized"
