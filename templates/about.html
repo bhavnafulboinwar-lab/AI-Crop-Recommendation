@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AI Crop Recommendation System</title>
+    <meta name="description" content="Learn about the machine learning model and soil parameters used in the AI Crop Recommendation System to optimize agricultural yields.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="navbar-solid-only">
+
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-label="Loading page content">
+        <div class="spinner-custom"></div>
+        <h4 class="text-success fw-bold">AI Crop Recommendation</h4>
+        <p class="text-muted small">Loading documentation reports...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top" aria-label="Main Navigation">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">
+                <i class="fa-solid fa-leaf"></i>
+                <span>AI Crop Recommendation</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Crop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="predict.html" class="btn btn-light-custom text-success shadow-sm">
+                            <i class="fa-solid fa-play"></i> Get Started
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header" aria-label="About Banner">
+        <div class="container">
+            <h1>About the System</h1>
+            <p>Bridging machine learning and agricultural engineering for smarter farming</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="section-padding bg-light" aria-label="About Details">
+        <div class="container">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="text-success mb-3">Smart Farming with Machine Learning</h2>
+                    <p class="lead text-muted">The AI Crop Recommendation System is designed to empower modern farmers, students, and agronomists to make data-driven planting choices.</p>
+                    <p>Our platform uses advanced RandomForest machine learning classification engines trained on thousands of instances of crop data. By analyzing key soil indicators (nitrogen, phosphorus, potassium, acidity) in combination with local climatic vectors (average temperature, humidity levels, seasonal rainfall), the simulator identifies the single crop most adapted to yield optimally in those conditions.</p>
+                    <p>This avoids trial-and-error sowing, optimizes fertilizer applications, and conserves vital irrigation water resources by matching crops with their natural ecological niches.</p>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Leaf cards or statistics info panel -->
+                    <div class="glass-card">
+                        <h3 class="mb-4 text-center"><i class="fa-solid fa-microchip text-success me-2"></i>ML Model Architecture</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent py-3">
+                                <span><i class="fa-solid fa-circle-check text-success me-2"></i> Classifier Algorithm</span>
+                                <span class="badge bg-success rounded-pill">Random Forest</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent py-3">
+                                <span><i class="fa-solid fa-chart-pie text-success me-2"></i> Dataset Dimensions</span>
+                                <span class="fw-semibold">2,200 Crop Records</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent py-3">
+                                <span><i class="fa-solid fa-bullseye text-success me-2"></i> Out-Of-Bag Accuracy</span>
+                                <span class="badge bg-primary rounded-pill">95.4%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent py-3">
+                                <span><i class="fa-solid fa-leaf text-success me-2"></i> Supported Crops</span>
+                                <span class="fw-semibold">22 Unique Varieties</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parameters Grid Section -->
+            <div class="row g-4 mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-5"><i class="fa-solid fa-list-check text-success me-2"></i>Analyzed Soil & Climate Indicators</h3>
+                </div>
+                <!-- Card 1: Nitrogen -->
+                <div class="col-md-4">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto">N</div>
+                        <h5>Nitrogen (N)</h5>
+                        <p>Critical for vegetative leaf growth and photosynthesis. Ranges typically from 0 to 150 mg/kg.</p>
+                    </div>
+                </div>
+                <!-- Card 2: Phosphorus -->
+                <div class="col-md-4">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto">P</div>
+                        <h5>Phosphorus (P)</h5>
+                        <p>Essential for healthy root development and fruit/seed formulation. Normal values: 0 to 150 mg/kg.</p>
+                    </div>
+                </div>
+                <!-- Card 3: Potassium -->
+                <div class="col-md-4">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto">K</div>
+                        <h5>Potassium (K)</h5>
+                        <p>Regulates water usage, starch synthesis, and strengthens crop disease immunity. Limits: 0 to 250 mg/kg.</p>
+                    </div>
+                </div>
+                <!-- Card 4: Temperature -->
+                <div class="col-md-3">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto"><i class="fa-solid fa-temperature-half"></i></div>
+                        <h5>Temperature</h5>
+                        <p>Influences growth rates, germination, and photosynthesis cycles (0°C to 50°C).</p>
+                    </div>
+                </div>
+                <!-- Card 5: Humidity -->
+                <div class="col-md-3">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto"><i class="fa-solid fa-droplet"></i></div>
+                        <h5>Humidity</h5>
+                        <p>Drives transpiration intervals, leaf respiration, and crop heat stress resistance (0% to 100%).</p>
+                    </div>
+                </div>
+                <!-- Card 6: pH Value -->
+                <div class="col-md-3">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto"><i class="fa-solid fa-vial"></i></div>
+                        <h5>pH Balance</h5>
+                        <p>Soil acidity indicator influencing nutrient solubility and biological activity (0.0 to 14.0).</p>
+                    </div>
+                </div>
+                <!-- Card 7: Rainfall -->
+                <div class="col-md-3">
+                    <div class="premium-card text-center">
+                        <div class="card-icon-wrapper mx-auto"><i class="fa-solid fa-cloud-showers-water"></i></div>
+                        <h5>Rainfall</h5>
+                        <p>Primary driver of soil moisture and irrigation supplement metrics (0.0mm to 400.0mm).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>AI Crop Recommendation</span>
+                    </div>
+                    <p>Enabling digital agronomy by predicting the best yielding crop for your soils. Designed with clean SaaS aesthetics and responsive components.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="predict.html">Predict Crop</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h5>Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Interactive Dashboards</a></li>
+                        <li><a href="#">Dynamic Rule Match</a></li>
+                        <li><a href="#">NPK Profiling</a></li>
+                        <li><a href="#">Climate Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for standard crop tips and farming optimizations.</p>
+                    <div class="input-group mt-3">
+                        <input type="email" class="form-control rounded-start" placeholder="Your Email" aria-label="Newsletter email input">
+                        <button class="btn btn-success" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2026 AI Crop Recommendation System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button type="button" id="btn-back-to-top" aria-label="Scroll back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
