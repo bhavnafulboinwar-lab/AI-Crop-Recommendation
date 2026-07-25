@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Crop Recommendation System</title>
+    <meta name="description" content="View historical crop prediction records, soil nutrient profiles, crop recommendation distributions, and environmental trends.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="navbar-solid-only">
+
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-label="Loading page content">
+        <div class="spinner-custom"></div>
+        <h4 class="text-success fw-bold">AI Crop Recommendation</h4>
+        <p class="text-muted small">Loading analytical reports...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top" aria-label="Main Navigation">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">
+                <i class="fa-solid fa-leaf"></i>
+                <span>AI Crop Recommendation</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Crop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="predict.html" class="btn btn-light-custom text-success shadow-sm">
+                            <i class="fa-solid fa-play"></i> Get Started
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header" aria-label="Dashboard Banner">
+        <div class="container">
+            <h1>Analytics Dashboard</h1>
+            <p>Monitor recent soil analysis, crop distributions, and climate metrics</p>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Section -->
+    <main class="section-padding bg-light" aria-label="Dashboard contents">
+        <div class="container">
+            
+            <!-- Statistics Row (KPIs) -->
+            <div class="row g-4 mb-5">
+                <!-- Total Predictions -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-stat-card">
+                        <div class="dashboard-stat-icon text-primary">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="dashboard-stat-info">
+                            <h3 id="dashboard-total-predictions">0</h3>
+                            <p>Total Predictions</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Supported Crops -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-stat-card">
+                        <div class="dashboard-stat-icon text-success">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <div class="dashboard-stat-info">
+                            <h3 id="dashboard-supported-crops">22</h3>
+                            <p>Supported Crops</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Model Accuracy -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-stat-card">
+                        <div class="dashboard-stat-icon text-warning">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="dashboard-stat-info">
+                            <h3 id="dashboard-accuracy">95.4%</h3>
+                            <p>Prediction Accuracy</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Today's Runs -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-stat-card">
+                        <div class="dashboard-stat-icon text-danger">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div class="dashboard-stat-info">
+                            <h3 id="dashboard-today-predictions">0</h3>
+                            <p>Today's Predictions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section: Recent History -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 text-primary mb-0"><i class="fa-solid fa-history me-2"></i>Recent Prediction History</h2>
+                        <a href="predict.html" class="btn btn-primary-custom btn-sm py-2 px-3"><i class="fa-solid fa-plus"></i> New Prediction</a>
+                    </div>
+                    
+                    <div class="table-responsive-custom">
+                        <table class="table table-custom table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date & Time</th>
+                                    <th scope="col">Nitrogen (N)</th>
+                                    <th scope="col">Phosphorus (P)</th>
+                                    <th scope="col">Potassium (K)</th>
+                                    <th scope="col">Temperature</th>
+                                    <th scope="col">Humidity</th>
+                                    <th scope="col">pH Value</th>
+                                    <th scope="col">Rainfall</th>
+                                    <th scope="col">Recommended Crop</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboard-history-body">
+                                <!-- Dynamically Rendered by JS -->
+                                <tr>
+                                    <td colspan="9" class="text-center py-4 text-muted">
+                                        <div class="spinner-border spinner-border-sm text-success me-2" role="status"></div>
+                                        Retrieving database logs...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row g-4">
+                <!-- Pie Chart: Recommendation Share -->
+                <div class="col-lg-4">
+                    <div class="chart-card">
+                        <h4>Recommendation Share</h4>
+                        <div class="chart-container">
+                            <canvas id="cropPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bar Chart: Nutrient Profiles -->
+                <div class="col-lg-8">
+                    <div class="chart-card">
+                        <h4>Nutrient Profile Comparison (N, P, K averages)</h4>
+                        <div class="chart-container">
+                            <canvas id="nutrientBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Line Chart: Climate Trends -->
+                <div class="col-12">
+                    <div class="chart-card">
+                        <h4>Climate Trend Analysis (Temperature vs Rainfall)</h4>
+                        <div class="chart-container" style="height: 320px;">
+                            <canvas id="climateLineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>AI Crop Recommendation</span>
+                    </div>
+                    <p>Enabling digital agronomy by predicting the best yielding crop for your soils. Designed with clean SaaS aesthetics and responsive components.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="predict.html">Predict Crop</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h5>Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Interactive Dashboards</a></li>
+                        <li><a href="#">Dynamic Rule Match</a></li>
+                        <li><a href="#">NPK Profiling</a></li>
+                        <li><a href="#">Climate Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for standard crop tips and farming optimizations.</p>
+                    <div class="input-group mt-3">
+                        <input type="email" class="form-control rounded-start" placeholder="Your Email" aria-label="Newsletter email input">
+                        <button class="btn btn-success" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2026 AI Crop Recommendation System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button type="button" id="btn-back-to-top" aria-label="Scroll back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Core JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

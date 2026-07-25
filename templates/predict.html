@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Crop - AI Crop Recommendation System</title>
+    <meta name="description" content="Enter your soil parameters (Nitrogen, Phosphorus, Potassium, pH) and climate parameters (temperature, humidity, rainfall) to find the best crop to plant.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="navbar-solid-only">
+
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-label="Loading page content">
+        <div class="spinner-custom"></div>
+        <h4 class="text-success fw-bold">AI Crop Recommendation</h4>
+        <p class="text-muted small">Loading Predictor Engine...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top" aria-label="Main Navigation">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">
+                <i class="fa-solid fa-leaf"></i>
+                <span>AI Crop Recommendation</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Crop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="predict.html" class="btn btn-light-custom text-success shadow-sm">
+                            <i class="fa-solid fa-play"></i> Get Started
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header Header -->
+    <header class="page-header" aria-label="Prediction Banner">
+        <div class="container">
+            <h1>Crop Recommendation</h1>
+            <p>Enter soil parameters and climate indicators to match with the ideal crop</p>
+        </div>
+    </header>
+
+    <!-- Form Section -->
+    <main class="form-background-decoration section-padding" aria-label="Soil input form">
+        <!-- Floating Leaf Illustrations on Sides (Deco only) -->
+        <svg class="leaf-deco-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" class="text-success" d="M30,90 C50,90 90,50 90,30 C90,10 70,10 50,30 C30,50 10,70 10,90 Z" />
+            <path fill="currentColor" class="text-success-emphasis" d="M10,90 Q50,70 90,30" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
+        </svg>
+        <svg class="leaf-deco-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" class="text-success" d="M30,90 C50,90 90,50 90,30 C90,10 70,10 50,30 C30,50 10,70 10,90 Z" />
+            <path fill="currentColor" class="text-success-emphasis" d="M10,90 Q50,70 90,30" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
+        </svg>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <!-- Glassmorphism Card -->
+                    <div class="glass-card">
+                        <div class="glass-card-header">
+                            <div class="header-icon">
+                                <i class="fa-solid fa-flask-vial"></i>
+                            </div>
+                            <h2>Enter Soil Parameters</h2>
+                            <p class="text-muted">Provide accurate inputs for both chemical soil indicators and local environmental averages.</p>
+                        </div>
+
+                        <!-- Soil Parameters Form -->
+                        <form id="predictForm" novalidate>
+                            <div class="row g-4">
+                                <!-- Nitrogen -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="nitrogen" class="form-label-custom">
+                                            Nitrogen (N)
+                                            <span id="n-help">mg/kg (0-150)</span>
+                                        </label>
+                                        <input type="number" class="form-control form-control-custom" id="nitrogen" name="nitrogen" placeholder="e.g. 90" min="0" max="150" value="90" required aria-describedby="n-help">
+                                    </div>
+                                </div>
+                                <!-- Phosphorus -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="phosphorus" class="form-label-custom">
+                                            Phosphorus (P)
+                                            <span id="p-help">mg/kg (0-150)</span>
+                                        </label>
+                                        <input type="number" class="form-control form-control-custom" id="phosphorus" name="phosphorus" placeholder="e.g. 42" min="0" max="150" value="42" required aria-describedby="p-help">
+                                    </div>
+                                </div>
+                                <!-- Potassium -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="potassium" class="form-label-custom">
+                                            Potassium (K)
+                                            <span id="k-help">mg/kg (0-250)</span>
+                                        </label>
+                                        <input type="number" class="form-control form-control-custom" id="potassium" name="potassium" placeholder="e.g. 43" min="0" max="250" value="43" required aria-describedby="k-help">
+                                    </div>
+                                </div>
+                                <!-- Temperature -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="temp" class="form-label-custom">
+                                            Temperature
+                                            <span id="temp-help">°C (0-50)</span>
+                                        </label>
+                                        <input type="number" step="0.1" class="form-control form-control-custom" id="temp" name="temp" placeholder="e.g. 25.5" min="0" max="50" value="25.5" required aria-describedby="temp-help">
+                                    </div>
+                                </div>
+                                <!-- Humidity -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="humidity" class="form-label-custom">
+                                            Humidity
+                                            <span id="humid-help">% (0-100)</span>
+                                        </label>
+                                        <input type="number" step="0.1" class="form-control form-control-custom" id="humidity" name="humidity" placeholder="e.g. 60" min="0" max="100" value="60" required aria-describedby="humid-help">
+                                    </div>
+                                </div>
+                                <!-- pH Value -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="ph" class="form-label-custom">
+                                            pH Value
+                                            <span id="ph-help">pH (0-14)</span>
+                                        </label>
+                                        <input type="number" step="0.1" class="form-control form-control-custom" id="ph" name="ph" placeholder="e.g. 6.5" min="0" max="14" value="6.5" required aria-describedby="ph-help">
+                                    </div>
+                                </div>
+                                <!-- Rainfall -->
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="rainfall" class="form-label-custom">
+                                            Rainfall
+                                            <span id="rain-help">mm (0-400)</span>
+                                        </label>
+                                        <input type="number" step="0.1" class="form-control form-control-custom" id="rainfall" name="rainfall" placeholder="e.g. 200" min="0" max="400" value="200" required aria-describedby="rain-help">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="text-center mt-5">
+                                <button type="submit" class="btn btn-primary-custom px-5 py-3 shadow">
+                                    <i class="fa-solid fa-microchip"></i> Predict Suitable Crop
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>AI Crop Recommendation</span>
+                    </div>
+                    <p>Enabling digital agronomy by predicting the best yielding crop for your soils. Designed with clean SaaS aesthetics and responsive components.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="predict.html">Predict Crop</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h5>Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Interactive Dashboards</a></li>
+                        <li><a href="#">Dynamic Rule Match</a></li>
+                        <li><a href="#">NPK Profiling</a></li>
+                        <li><a href="#">Climate Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for standard crop tips and farming optimizations.</p>
+                    <div class="input-group mt-3">
+                        <input type="email" class="form-control rounded-start" placeholder="Your Email" aria-label="Newsletter email input">
+                        <button class="btn btn-success" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2026 AI Crop Recommendation System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button type="button" id="btn-back-to-top" aria-label="Scroll back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
